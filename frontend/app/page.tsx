@@ -59,7 +59,7 @@ export default function Home() {
     };
 
     try {
-      const response = await fetch('https://lazy-items-film.loca.lt/api/pipeline/rank', {
+      const response = await fetch('https://tall-candies-clap.loca.lt/api/pipeline/rank', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -84,7 +84,7 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://lazy-items-film.loca.lt/api/demo/run-sample');
+      const response = await fetch('https://tall-candies-clap.loca.lt/api/demo/run-sample');
       if (!response.ok) throw new Error('Demo request failed');
       const data = await response.json();
       const rankedItems = data.result?.ranked_results || data.result?.items || data.result || [];
@@ -131,7 +131,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('https://lazy-items-film.loca.lt/api/tailor', {
+      const response = await fetch('https://tall-candies-clap.loca.lt/api/tailor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -161,7 +161,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('https://lazy-items-film.loca.lt/api/action-plan', {
+      const response = await fetch('https://tall-candies-clap.loca.lt/api/action-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
