@@ -59,7 +59,7 @@ export default function Home() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/pipeline/rank', {
+      const response = await fetch('https://lazy-items-film.loca.lt/api/pipeline/rank', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -84,7 +84,7 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/demo/run-sample');
+      const response = await fetch('https://lazy-items-film.loca.lt/api/demo/run-sample');
       if (!response.ok) throw new Error('Demo request failed');
       const data = await response.json();
       const rankedItems = data.result?.ranked_results || data.result?.items || data.result || [];
@@ -96,7 +96,6 @@ export default function Home() {
     }
   };
 
-  // Helper to standardise opportunity structure for API calls
   const extractOpportunityData = (item: any) => {
     const opp = item.opportunity || item.extracted || item;
     return {
@@ -123,7 +122,6 @@ export default function Home() {
     };
   };
 
-  // Handler for Pitch Generation
   const handleGeneratePitch = async (item: any) => {
     setModalType('pitch');
     setModalLoading(true);
@@ -133,7 +131,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/tailor', {
+      const response = await fetch('https://lazy-items-film.loca.lt/api/tailor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -154,7 +152,6 @@ export default function Home() {
     }
   };
 
-  // Handler for Action Plan Generation
   const handleGeneratePlan = async (item: any) => {
     setModalType('plan');
     setModalLoading(true);
@@ -164,7 +161,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/action-plan', {
+      const response = await fetch('https://lazy-items-film.loca.lt/api/action-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -376,7 +373,6 @@ export default function Home() {
                     </div>
                   )}
 
-                  {/* Action Buttons for Pitch and Action Plan */}
                   <div className="flex gap-3 pt-2 border-t border-slate-700/60">
                     <button
                       type="button"
@@ -400,7 +396,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Modal Overlay for Pitch / Action Plan Output */}
       {modalType && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-slate-800 border border-slate-700 rounded-xl max-w-2xl w-full p-6 space-y-4 max-h-[85vh] overflow-y-auto relative">
