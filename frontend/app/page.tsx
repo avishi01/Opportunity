@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { Sparkles, Send, Loader2, ExternalLink, FileText, CheckSquare, X } from 'lucide-react';
 
+// REPLACE THIS WITH YOUR RENDER BACKEND URL (e.g., https://opportunity-backend.onrender.com)
+const BACKEND_URL = 'https://lazy-items-film.loca.lt';
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<any[]>([]);
@@ -59,7 +62,7 @@ export default function Home() {
     };
 
     try {
-      const response = await fetch('https://tall-candies-clap.loca.lt/api/pipeline/rank', {
+      const response = await fetch(`${BACKEND_URL}/api/pipeline/rank`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -84,7 +87,7 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://tall-candies-clap.loca.lt/api/demo/run-sample');
+      const response = await fetch(`${BACKEND_URL}/api/demo/run-sample`);
       if (!response.ok) throw new Error('Demo request failed');
       const data = await response.json();
       const rankedItems = data.result?.ranked_results || data.result?.items || data.result || [];
@@ -131,7 +134,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('https://tall-candies-clap.loca.lt/api/tailor', {
+      const response = await fetch(`${BACKEND_URL}/api/tailor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -161,7 +164,7 @@ export default function Home() {
     const formattedOpp = extractOpportunityData(item);
 
     try {
-      const response = await fetch('https://tall-candies-clap.loca.lt/api/action-plan', {
+      const response = await fetch(`${BACKEND_URL}/api/action-plan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
